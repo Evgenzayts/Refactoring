@@ -1,11 +1,10 @@
-// Copyright 2021 Your Name <your_email>
+// Copyright 2022 Evgenzayts evgenzaytsev2002@yandex.ru
 
 #include <algorithm>
+#include <example.hpp>
 #include <iostream>
 #include <set>
 #include <sstream>
-
-#include <example.hpp>
 
 void Log::Write(std::string_view message) const {
   *out_ << message << std::endl;
@@ -22,7 +21,7 @@ constexpr size_t kMinLines = 10;
 UsedMemory::UsedMemory(const Log& log) : log_(&log) {}
 
 void UsedMemory::OnDataLoad(const std::vector<Item>& old_items,
-                const std::vector<Item>& new_items) {
+                            const std::vector<Item>& new_items) {
   log_->WriteDebug("UsedMemory::OnDataLoad");
   for (const auto& item : old_items) {
     used_ -= item.id.capacity();
@@ -39,7 +38,7 @@ void UsedMemory::OnDataLoad(const std::vector<Item>& old_items,
 }
 
 void UsedMemory::OnRawDataLoad(const std::vector<std::string>& old_items,
-                   const std::vector<std::string>& new_items) {
+                               const std::vector<std::string>& new_items) {
   log_->WriteDebug("UsedMemory::OnRawDataLoads");
   for (const auto& item : old_items) {
     used_ -= item.capacity();
@@ -63,9 +62,8 @@ void StatSender::OnLoaded(const std::vector<Item>& new_items) {
 
 void StatSender::Skip(const Item& item) { AsyncSend({item}, "/items/skiped"); }
 
-void StatSender::AsyncSend(
-    const std::vector<Item>& items,
-    std::string_view path) {
+void StatSender::AsyncSend(const std::vector<Item>& items,
+                           std::string_view path) {
   log_->Write(path);
   log_->Write("send stat " + std::to_string(items.size()));
 

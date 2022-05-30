@@ -1,13 +1,13 @@
-// Copyright 2021 Your Name <your_email>
+// Copyright 2022 Evgenzayts evgenzaytsev2002@yandex.ru
 
 #ifndef INCLUDE_EXAMPLE_HPP_
 #define INCLUDE_EXAMPLE_HPP_
 
+#include <fstream>
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <vector>
 #include <string_view>
+#include <vector>
 
 class Log {
  public:
@@ -78,4 +78,4 @@ class PageContainer {
   std::vector<std::string> raw_data_;
 };
 
-#endif // INCLUDE_EXAMPLE_HPP_
+#endif  // INCLUDE_EXAMPLE_HPP_
